@@ -7,7 +7,7 @@ dotenv.config()
 router.use(express.json())
 
 router.post('/api/send-email', (req, res) => {
-  console.log('Request received at /api/send-email') // Log to check if the endpoint is hit
+  console.log('Request received at /api/send-email') 
   const { name, email, subject, message } = req.body
 
   const transporter = nodemailer.createTransport({
@@ -33,6 +33,12 @@ router.post('/api/send-email', (req, res) => {
       console.log('Email sent:', info.response)
       res.status(200).send('Email sent ')
     }
+  })
+})
+
+router.get('/api/data', (req, res) => {
+  res.status(200).json({
+    message: 'Data retrieved successfully',
   })
 })
 
